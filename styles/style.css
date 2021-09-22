@@ -33,7 +33,7 @@ body {
 }
 
 .header li {
-  margin: 1rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .header li a {
@@ -50,6 +50,7 @@ body {
 
 .event-section .next-event {
   width: 25%;
+  padding-top: 3rem;
 }
 
 .event-section .add-event {
@@ -62,6 +63,7 @@ body {
 
 .event-section .calendar {
   width: 25%;
+  padding-top: 3rem;
 }
 
 .event-section .calendar h2 {
@@ -116,9 +118,25 @@ body {
   font-size: 1rem;
 }
 
+.event-form .add-btn {
+  padding: 1rem;
+  border: none;
+  border-radius: 7px;
+  background: green;
+  font-size: 1.125rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
+  font-size: 1.125rem;
 }
 
 table td,
@@ -132,5 +150,26 @@ table th {
 
 table td {
   padding: .3rem;
+}
+
+.edit-btn {
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  background: green;
+  font-size: 1.125rem;
+  cursor: pointer;
+  color: white;
+  display: block;
+  margin-left: auto;
+  margin-top: .5rem;
+}
+
+.edit-btn i {
+  margin-right: .5rem;
+}
+
+.active {
+  background: gray;
 }
 /*# sourceMappingURL=style.css.map */

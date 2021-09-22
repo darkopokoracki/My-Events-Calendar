@@ -16,7 +16,7 @@
 
 .header {
     li {
-        margin: 1rem 2rem;
+        padding: 1rem 2rem;
         a {
             @include navLinks;
         }
@@ -31,6 +31,7 @@
 .event-section {
     .next-event {
         width: 25%;
+        padding-top: 3rem;
     }
 
     .add-event {
@@ -43,6 +44,7 @@
 
     .calendar {
         width: 25%;
+        padding-top: 3rem;
         
         h2 {
             text-align: right;
@@ -82,11 +84,16 @@
         color: rgb(200, 200, 200);
         font-size: 1rem;
     }
+
+    .add-btn {
+        @include addButton;
+    }
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
+    font-size: 1.125rem;
 
     td,
     th {
@@ -100,4 +107,12 @@ table {
     td {
         padding: .3rem;
     }
+}
+
+.edit-btn {
+    @include editButton;
+}
+
+.active {
+    background: gray;
 }
