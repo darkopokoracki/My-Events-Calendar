@@ -5,9 +5,7 @@ const tableBody = document.querySelector('.table-body');
 const addButton = document.querySelector('.add-btn');
 
 
-function addInTable(e) {
-    e.preventDefault();
-
+function addInTable() {
     let tableRow = document.createElement('tr');
 
     tableRow.innerHTML = `
@@ -22,8 +20,18 @@ function addInTable(e) {
     locationInput.value = '';
 }
 
+function formValidation(e) {
+    e.preventDefault();
 
-addButton.addEventListener('click', addInTable);
+    if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '') {
+        console.log('Niste popunili formu');
+    } else {
+        addInTable();
+    }
+}
+
+
+addButton.addEventListener('click', formValidation);
 
 
 
