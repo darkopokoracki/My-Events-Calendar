@@ -122,3 +122,21 @@ table {
 .active {
     background: gray;
 }
+
+.alert {
+    padding: 20px; 
+    color: white;
+    font-size: 1.125rem;
+}
+
+.success-alert {
+    background: #2FB986;
+}
+
+.error-alert {
+    background: #f44336;
+}
+
+.close-btn {
+    @include closeBtn;
+}

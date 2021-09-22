@@ -1,0 +1,5 @@
+----- 1. Napraviti 2 alerta za validaciju forme
+2. Malo Urediti home stranicu, dodati naslov i call to action button
+3. Razmisliti o organizaciji Javascripta 
+4. Poceti sa Next Event Aside Sekcijom
+	- Napraviti stile za kartu na kojoj ce se nalaziti sledeci event

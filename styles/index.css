@@ -177,4 +177,34 @@ table td {
 .active {
   background: gray;
 }
+
+.alert {
+  padding: 20px;
+  color: white;
+  font-size: 1.125rem;
+}
+
+.success-alert {
+  background: #2FB986;
+}
+
+.error-alert {
+  background: #f44336;
+}
+
+.close-btn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 1.125rem;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: black;
+}
 /*# sourceMappingURL=index.css.map */

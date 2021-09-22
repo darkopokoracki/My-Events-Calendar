@@ -35,3 +35,17 @@
     margin: 0 auto;
     margin-bottom: 3rem;
 }
+
+@mixin closeBtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 1.125rem;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        color: black;
+    }
+}
