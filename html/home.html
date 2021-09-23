@@ -14,47 +14,31 @@
     <link rel="stylesheet" href="../styles/index.css">
 
     <title>Events Calendar</title>
-
-    <style>
-        .background-container {
-            position: relative;
-            /* background: gray; */
-            background: rgb(0, 0, 0, 0.5);
-            overflow: hidden;
-            min-height: 100vh;
-            color: white;
-        }
-
-        .bg-video {
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-        }
-    </style>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <nav>
-                <ul class="nav-list">
-                    <li class="active"><a href="home.html">Home</a></li>
-                    <li><a href="index.html">Add Event</a></li>
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="edit.html">Edit</a></li>
-                </ul>
-            </nav>
-        </header>
-    </div>
-
+<body>  
     <div class="background-container">
-        <h1>Some Text</h1>
-        <video src="../video/bg-video.mp4" autoplay muted loop class="bg-video">
-            
-        </video>
+        <div class="container">
+            <header class="header">
+                <nav>
+                    <ul class="nav-list">
+                        <li class="active"><a href="home.html">Home</a></li>
+                        <li><a href="index.html">Add Event</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="edit.html">Edit</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="content">
+                <h1>Some Text</h1>
+            </div>
+            <video src="../video/bg-video.mp4" autoplay muted loop class="bg-video">
+                    
+            </video>
+        </div>
+
+
     </div>
 </body>
 </html>

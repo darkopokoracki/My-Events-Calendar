@@ -8,17 +8,36 @@ const eventForm = document.querySelector('.event-form');
 
 function addInTable() {
     let tableRow = document.createElement('tr');
+    const eventObject = localStorage.getItem('event1');
+    const parseEventObject = JSON.parse(eventObject);
 
     tableRow.innerHTML = `
-        <td>${eventInput.value}</td>
-        <td>${dateInput.value}</td>
-        <td>${locationInput.value}</td>
+        <td>${parseEventObject.event}</td>
+        <td>${parseEventObject.date}</td>
+        <td>${parseEventObject.location}</td>
     `
     tableBody.appendChild(tableRow);
 
     eventInput.value = '';
     dateInput.value = '';
     locationInput.value = '';
+}
+
+function addInLocalStorage(event, date, location) {
+    let eventsCounter = localStorage.length;
+
+    class Event {
+        constructor(event, date, location) {
+            this.event = event;
+            this.date = date;
+            this.location = location;
+        }
+    }
+
+    const eventObject = new Event(event, date, location);
+
+
+    localStorage.setItem(`event${eventsCounter + 1}`, JSON.stringify(eventObject));
 }
 
 function createAlert(bool) {
@@ -58,14 +77,13 @@ function formValidation(e) {
     if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '') {
         createAlert(false);
     } else {
-        addInTable();
         createAlert(true);
+        addInLocalStorage(eventInput.value, dateInput.value, locationInput.value);
+        addInTable();
     }
 }
 
 
 addButton.addEventListener('click', formValidation);
 
-
-
-// 1. Dodavanje u tabelu
+// localStorage.clear();
