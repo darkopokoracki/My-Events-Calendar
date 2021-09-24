@@ -8,16 +8,16 @@ const eventForm = document.querySelector('.event-form');
 function updateTable() {
     
     for (let i = 0; i < localStorage.length; i++) {
-        const dd = localStorage.getItem(localStorage.key(i));
-        const ff = JSON.parse(dd);
+        const getEventItem = localStorage.getItem(localStorage.key(i));
+        const parseEventItem = JSON.parse(getEventItem);
 
         let tableRow = document.createElement('tr');
 
         tableRow.innerHTML = `
             <td>${i + 1}</td>
-            <td>${ff.event}</td>
-            <td>${ff.date}</td>
-            <td>${ff.location}</td>
+            <td>${parseEventItem.event}</td>
+            <td>${parseEventItem.date}</td>
+            <td>${parseEventItem.location}</td>
         `
 
         tableBody.appendChild(tableRow); 
@@ -61,6 +61,7 @@ function addInLocalStorage(event, date, location) {
     localStorage.setItem(`event${eventsCounter + 1}`, stringifyEventObject);
     
     addInTable(stringifyEventObject);
+    nextEvent();
 }
 
 function createAlert(bool) {
@@ -104,7 +105,38 @@ function formValidation(e) {
     }
 }
 
+function nextEvent() {
+    const nextEventName = document.querySelector('.next-event-name');
+    const nextEventDate = document.querySelector('.next-event-date');
+    const nextEventLocation = document.querySelector('.next-event-location');
+
+    var eventsArray = [];
+    let nearestDate = new Date(2100, 8, 20);
+    const today = new Date();
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const getEventItem = localStorage.getItem(localStorage.key(i));
+        var parseEventItem = JSON.parse(getEventItem);
+        eventsArray.push(parseEventItem);
+
+        var getEventDate = new Date(parseEventItem.date.split("-")); //Zasto ovo radi ??
+
+        if (getEventDate < nearestDate && getEventDate > today) {
+            nearestDate = getEventDate;
+            var parseEventItem_id = i;
+        }
+    }
+
+    nextEventName.innerText = eventsArray[parseEventItem_id].event;
+    nextEventDate.innerText = eventsArray[parseEventItem_id].date;
+    nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
+}
 
 addButton.addEventListener('click', formValidation);
 updateTable();
+
+const eventCounter = localStorage.length;
+if (eventCounter > 0) {
+    nextEvent();
+}
 // localStorage.clear();

@@ -58,6 +58,28 @@
     }
 }
 
+.event-section {
+    .event-card {
+        border-radius: 10px;
+        background: lightgray;
+        min-height: 250px;
+        width: 90%;
+        padding: 1rem;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .calendar-card {
+        border: 1px solid black;
+        min-height: 250px;
+        width: 90%;
+        margin-left: auto;
+    }
+}
+
 .event-form {
     padding: 2rem;  /* Privremeno, Mozno */
 }
