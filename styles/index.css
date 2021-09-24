@@ -100,6 +100,45 @@ body {
   margin-left: auto;
 }
 
+.event-section .calendar-card .month-title {
+  padding: 1rem 0 .5rem 0;
+  background: lightgray;
+  text-align: center;
+}
+
+.event-section .calendar-card .week-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+  background: black;
+  color: white;
+}
+
+.event-section .calendar-card .week-row p {
+  width: 12%;
+  text-align: center;
+}
+
+.event-section .calendar-card .days-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.event-section .calendar-card .days-row p {
+  width: 13%;
+  text-align: center;
+}
+
 .event-form {
   padding: 2rem;
   /* Privremeno, Mozno */

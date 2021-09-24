@@ -132,10 +132,53 @@ function nextEvent() {
     nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
 }
 
+function calendar() {
+    const monthTitle = document.querySelector('.month-title');
+    const daysRow = document.querySelector('.days-row');
+
+    const date = new Date();
+    const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth();
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
+
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July',
+        'August', 'September', 'October', 'November', 'December'
+    ];
+
+    const days = [
+        'S', 'M', 'T', 'W', 'T', 'F', 'S'
+    ];
+
+    monthTitle.innerText = months[currentMonth];
+
+    const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+    console.log(daysInMonth);
+
+    console.log(firstDay);
+    console.log(lastDay);
+
+    for (let i = 0; i < firstDay; i++) {
+        const day = document.createElement('p');
+        day.className = 'day';
+        day.appendChild(document.createTextNode('.'));
+        daysRow.appendChild(day);
+    }
+
+    for (let j = 1; j < daysInMonth + 1; j++) {
+        const day = document.createElement('p');
+        day.className = 'day';
+        day.appendChild(document.createTextNode(j));
+        daysRow.appendChild(day);
+    }
+}
+
 addButton.addEventListener('click', formValidation);
 updateTable();
-
+calendar();
 const eventCounter = localStorage.length;
+
 if (eventCounter > 0) {
     nextEvent();
 }

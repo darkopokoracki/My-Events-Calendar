@@ -1,4 +1,0 @@
---- Sta treba uraditi ---
-1. Promeniti ime za dd i ff
-2. Uraditi next Event funkciju
-3. Polako razmisljati o kalendaru kako i sta, na koji nacin

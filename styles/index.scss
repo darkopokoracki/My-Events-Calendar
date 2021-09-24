@@ -77,6 +77,36 @@
         min-height: 250px;
         width: 90%;
         margin-left: auto;
+
+        .month-title {
+            padding: 1rem 0 .5rem 0;
+            background: lightgray;
+            text-align: center;
+        }
+
+        .week-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            background: black;
+            color: white;
+
+            p {
+                width: 12%;
+                text-align: center;
+            }
+        }
+
+        .days-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            p {
+                width: 13%;
+                text-align: center;
+            }
+        }
     }
 }
 
