@@ -136,7 +136,7 @@ function calendar() {
     const monthTitle = document.querySelector('.month-title');
     const daysRow = document.querySelector('.days-row');
 
-    const date = new Date();
+    const date = new Date(2021, 4);
     const currentYear = date.getFullYear();
     const currentMonth = date.getMonth();
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
@@ -154,22 +154,29 @@ function calendar() {
     monthTitle.innerText = months[currentMonth];
 
     const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
-    console.log(daysInMonth);
 
-    console.log(firstDay);
     console.log(lastDay);
+    let iCounter = 0;
 
     for (let i = 0; i < firstDay; i++) {
         const day = document.createElement('p');
         day.className = 'day';
-        day.appendChild(document.createTextNode('.'));
+        day.appendChild(document.createTextNode(' '));
         daysRow.appendChild(day);
+        iCounter += 1;
     }
 
     for (let j = 1; j < daysInMonth + 1; j++) {
         const day = document.createElement('p');
         day.className = 'day';
         day.appendChild(document.createTextNode(j));
+        daysRow.appendChild(day);
+    }
+
+    for (let k = iCounter + daysInMonth; k < 35; k++) {
+        const day = document.createElement('p');
+        day.className = 'day';
+        day.appendChild(document.createTextNode(' '));
         daysRow.appendChild(day);
     }
 }
