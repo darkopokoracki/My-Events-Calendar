@@ -142,6 +142,11 @@ function createEventCard() {
 
 if (localStorage.length > 0) {
     createEventCard();
+} else {
+    const eventAlert = document.createElement('div');
+    eventAlert.className = 'event-alert';
+    eventAlert.appendChild(document.createTextNode('Event does not exist'));
+    eventsSection.appendChild(eventAlert);
 }
 
 

@@ -36,17 +36,14 @@
                     <div>
                         <i class="fas fa-star"></i>
                         <p class="next-event-name">Krst</p>
-                        <!-- <i class="fas fa-star"></i> -->
                     </div>
                     <div>
                         <i class="far fa-calendar-alt"></i>
                         <p class="next-event-date">26.09.2021.</p>
-                        <!-- <i class="far fa-calendar-alt"></i> -->
                     </div>
                     <div>
                         <i class="fas fa-map-marker-alt"></i>
                         <p class="next-event-location">Padina</p>
-                        <!-- <i class="fas fa-map-marker-alt"></i> -->
                     </div>
                 </article>
             </aside>
@@ -68,7 +65,18 @@
                     <div class="group">
                         <label for="input-location">Location</label>
                         <input type="text" placeholder="location" id="input-location">
-                     </div>
+                    </div>
+
+                    <!-- <label for="eventType">Choose a event type: </label> -->
+                    <div class="event-select">
+                        <select name="eventType" id="eventType">
+                            <option value="music">Music</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="bussiness">Bussiness</option>
+                            <option value="school">School</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                    </div>
 
                      <button type="submit" class="add-btn">
                          Add

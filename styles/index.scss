@@ -152,6 +152,64 @@
     }
 }
 
+.event-form {
+    .event-select {
+        position: relative;
+        margin-bottom: 2rem;
+
+        select {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            font-size: 1.125rem;
+            padding: 1rem 4rem 1rem 1.5rem;
+            background: #4d5061;
+            color: white;
+            border: 0;
+            display: block;
+            margin-left: auto;
+        }
+    
+        .select-arrow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            background: #1F1F1F;
+            height: 100%;
+            width: 3rem;
+            pointer-events: none;
+
+            &::before,
+            &::after {
+                --size: .5rem;
+
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &::before {
+                border-left: var(--size) solid transparent;
+                border-right: var(--size) solid transparent;
+                border-bottom: var(--size) solid rgba(255, 255, 255, 0.5);
+
+                top: 35%;
+            }
+
+            &::after {
+                border-left: var(--size) solid transparent;
+                border-right: var(--size) solid transparent;
+                border-top: var(--size) solid rgba(255, 255, 255, 0.5);
+
+                top: 65%;
+            }
+        }
+    }
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
