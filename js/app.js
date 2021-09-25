@@ -136,7 +136,7 @@ function calendar() {
     const monthTitle = document.querySelector('.month-title');
     const daysRow = document.querySelector('.days-row');
 
-    const date = new Date(2021, 4);
+    const date = new Date();
     const currentYear = date.getFullYear();
     const currentMonth = date.getMonth();
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
@@ -147,15 +147,15 @@ function calendar() {
         'August', 'September', 'October', 'November', 'December'
     ];
 
-    const days = [
-        'S', 'M', 'T', 'W', 'T', 'F', 'S'
-    ];
+    // const days = [
+    //     'S', 'M', 'T', 'W', 'T', 'F', 'S'
+    // ];
 
     monthTitle.innerText = months[currentMonth];
 
-    const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    console.log(lastDay);
+    console.log(daysInMonth);
     let iCounter = 0;
 
     for (let i = 0; i < firstDay; i++) {
@@ -173,7 +173,7 @@ function calendar() {
         daysRow.appendChild(day);
     }
 
-    for (let k = iCounter + daysInMonth; k < 35; k++) {
+    for (let k = iCounter + daysInMonth; k < 42; k++) {
         const day = document.createElement('p');
         day.className = 'day';
         day.appendChild(document.createTextNode(' '));

@@ -94,10 +94,11 @@ body {
 }
 
 .event-section .calendar-card {
-  border: 1px solid black;
   min-height: 250px;
   width: 90%;
   margin-left: auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .event-section .calendar-card .month-title {
@@ -113,14 +114,15 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 1rem;
-  background: black;
+  padding: .5rem 0;
+  background: #1F1F1F;
   color: white;
 }
 
 .event-section .calendar-card .week-row p {
   width: 12%;
   text-align: center;
+  font-weight: bold;
 }
 
 .event-section .calendar-card .days-row {
@@ -132,11 +134,13 @@ body {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  background: lightgray;
 }
 
 .event-section .calendar-card .days-row p {
   width: 13%;
   text-align: center;
+  margin-bottom: .5rem;
 }
 
 .event-form {

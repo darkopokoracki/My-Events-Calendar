@@ -1,0 +1,63 @@
+.events-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .event {
+        // border: 2px solid black;
+        border-radius: 15px;
+        width: 30%;
+        margin-bottom: 2.5rem;
+        height: 70vh;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40% 40% 20%;
+        grid-template-areas: "image" "content" "status";
+
+        transition: transform 200ms ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    .event-image {
+        grid-area: image;
+        background-image: url(../nature.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .event-content {
+        grid-area: content;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .event-status {
+        grid-area: status;
+
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        background: lightgray;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+        .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; 
+        }
+    }
+
+}

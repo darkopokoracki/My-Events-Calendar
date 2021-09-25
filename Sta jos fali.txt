@@ -1,0 +1,22 @@
+---Veci delovi---
+1. Calendar stranica
+2. Events stranica
+3. Edit stranica
+
+
+---Manji delovi---
+1. Obeleziti Subotu i subotu na datumu
+2. Obeleziti dogadjaj na datumu 
+3. Smisliti nesto za nextEvent ako imamo 2 dogadjaja istog dana
+4. Kada dodje dan dogadjaja ne prikazuje mi da je to sledeci event. uraidti nesto da prikazuje da je to danasjni event
+
+
+
+---Greske----
+1. 
+
+
+
+-- ideje --
+Dodati checkbox za oznacavanje tipa dogadjaja
+(wedding, music, work, school, vacation, other) - Na osnovu ovoga ce generisati fotografiju na Events stranici
