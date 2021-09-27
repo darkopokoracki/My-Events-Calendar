@@ -19,6 +19,7 @@ function updateTable() {
             <td>${parseEventItem.event}</td>
             <td>${parseEventItem.date}</td>
             <td>${parseEventItem.location}</td>
+            <td>${parseEventItem.type}</td>
         `
 
         tableBody.appendChild(tableRow); 
@@ -43,11 +44,12 @@ function addInTable(stringifyEventObject) {
     eventInput.value = '';
     dateInput.value = '';
     locationInput.value = '';
-    // typeSelect.value = '';   MORAM VRATITI NA DEFAULT VREDNOST
+    typeSelect.value = '';  
 
 }
 
 function addInLocalStorage(event, date, location, type) {
+
     let eventsCounter = localStorage.length;
 
     class Event {
@@ -100,6 +102,8 @@ function createAlert(bool) {
 
 function formValidation(e) {
     e.preventDefault();
+
+    console.log(typeSelect.value);
 
     if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '' || typeSelect.value === '') {
         createAlert(false);

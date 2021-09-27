@@ -13,7 +13,7 @@
 
 
 ---Greske----
-1. 
+1. Kada se brise local storage moram 2 puta pozvati clear da bi se obrisalo, prvo se obrsie type a onda sve ostalo
 
 
 

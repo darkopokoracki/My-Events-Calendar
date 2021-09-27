@@ -43,6 +43,10 @@ function getDaysLeft(date) {
     }
 }
 
+function showEventImage() {
+
+}
+
 function createEventCard() {
     for (let i = 0; i < localStorage.length; i++) {
         // Get Items from local storage
@@ -62,8 +66,8 @@ function createEventCard() {
         event.className = 'event';
 
         const eventImage = document.createElement('div');
+        eventImage.style.backgroundImage = `url('../events images/${parseEventItem.type}.jpg')`;
         eventImage.className = 'event-image';
-        eventImage.appendChild(document.createTextNode('Slika1'));
         event.appendChild(eventImage);
 
         const eventContent = document.createElement('div');

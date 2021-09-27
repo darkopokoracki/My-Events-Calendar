@@ -220,7 +220,7 @@ body {
   color: white;
   border: 0;
   display: block;
-  margin-left: auto;
+  width: 100%;
 }
 
 .event-form .event-select .select-arrow {
