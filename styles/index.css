@@ -212,8 +212,8 @@ body {
 }
 
 .event-form .event-select select {
-  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
   font-size: 1.125rem;
   padding: 1rem 4rem 1rem 1.5rem;
   background: #4d5061;

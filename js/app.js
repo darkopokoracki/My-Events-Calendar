@@ -1,6 +1,7 @@
 const eventInput = document.getElementById('input-event-name');
 const dateInput = document.getElementById('input-date');
 const locationInput = document.getElementById('input-location');
+const typeSelect = document.getElementById('event-type');
 const tableBody = document.querySelector('.table-body');
 const addButton = document.querySelector('.add-btn');
 const eventForm = document.querySelector('.event-form');
@@ -35,27 +36,30 @@ function addInTable(stringifyEventObject) {
         <td>${parseEventObject.event}</td>
         <td>${parseEventObject.date}</td>
         <td>${parseEventObject.location}</td>
+        <td>${parseEventObject.type}</td>
     `
     tableBody.appendChild(tableRow);
 
     eventInput.value = '';
     dateInput.value = '';
     locationInput.value = '';
+    // typeSelect.value = '';   MORAM VRATITI NA DEFAULT VREDNOST
 
 }
 
-function addInLocalStorage(event, date, location) {
+function addInLocalStorage(event, date, location, type) {
     let eventsCounter = localStorage.length;
 
     class Event {
-        constructor(event, date, location) {
+        constructor(event, date, location, type) {
             this.event = event;
             this.date = date;
             this.location = location;
+            this.type = type;
         }
     }
 
-    const eventObject = new Event(event, date, location);
+    const eventObject = new Event(event, date, location, type);
 
     const stringifyEventObject = JSON.stringify(eventObject);
     localStorage.setItem(`event${eventsCounter + 1}`, stringifyEventObject);
@@ -97,11 +101,14 @@ function createAlert(bool) {
 function formValidation(e) {
     e.preventDefault();
 
-    if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '') {
+    if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '' || typeSelect.value === '') {
         createAlert(false);
     } else {
         createAlert(true);
-        addInLocalStorage(eventInput.value, dateInput.value, locationInput.value);
+        addInLocalStorage(eventInput.value,
+                          dateInput.value,  
+                          locationInput.value, 
+                          typeSelect.value);
     }
 }
 
@@ -109,6 +116,7 @@ function nextEvent() {
     const nextEventName = document.querySelector('.next-event-name');
     const nextEventDate = document.querySelector('.next-event-date');
     const nextEventLocation = document.querySelector('.next-event-location');
+    // const nextEventType = document.querySelector('.next-event-type');
 
     var eventsArray = [];
     let nearestDate = new Date(2100, 8, 20);
@@ -130,6 +138,7 @@ function nextEvent() {
     nextEventName.innerText = eventsArray[parseEventItem_id].event;
     nextEventDate.innerText = eventsArray[parseEventItem_id].date;
     nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
+    // nextEventType.innerText = eventsArray[parseEventItem_id].type;
 }
 
 function calendar() {
@@ -155,7 +164,7 @@ function calendar() {
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    console.log(daysInMonth);
+    // console.log(daysInMonth);
     let iCounter = 0;
 
     for (let i = 0; i < firstDay; i++) {
