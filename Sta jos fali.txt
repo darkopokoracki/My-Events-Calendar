@@ -1,22 +1,9 @@
----Veci delovi---
-1. Calendar stranica
-2. Events stranica
-3. Edit stranica
-
-
----Manji delovi---
-1. Obeleziti Subotu i subotu na datumu
-2. Obeleziti dogadjaj na datumu 
-3. Smisliti nesto za nextEvent ako imamo 2 dogadjaja istog dana
-4. Kada dodje dan dogadjaja ne prikazuje mi da je to sledeci event. uraidti nesto da prikazuje da je to danasjni event
+-- Kalendar za celu godinu
+-- Kalendar obeleziti dane.
 
 
 
----Greske----
-1. Kada se brise local storage moram 2 puta pozvati clear da bi se obrisalo, prvo se obrsie type a onda sve ostalo
+---- Dizajn
 
-
-
--- ideje --
-Dodati checkbox za oznacavanje tipa dogadjaja
-(wedding, music, work, school, vacation, other) - Na osnovu ovoga ce generisati fotografiju na Events stranici
+-- Greske 
+1. Ne radi passed status na events.js

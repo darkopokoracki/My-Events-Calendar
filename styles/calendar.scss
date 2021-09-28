@@ -1,0 +1,44 @@
+
+.calendar {
+    .month-card {
+        min-height: 250px;
+        width: 90%;
+        margin-left: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+
+        .month-title {
+            padding: 1rem 0 .5rem 0;
+            background: lightgray;
+            text-align: center;
+        }
+
+        .week-row {
+            display: flex;
+            justify-content: space-between;
+            padding: .5rem 0;
+            background: #1F1F1F;
+            color: white;
+
+            p {
+                width: 12%;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+        .days-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: lightgray;
+
+            p {
+                width: 13%;
+                text-align: center;
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}

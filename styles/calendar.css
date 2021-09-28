@@ -1,1 +1,51 @@
-/* No CSS *//*# sourceMappingURL=calendar.css.map */
+.calendar .month-card {
+  min-height: 250px;
+  width: 90%;
+  margin-left: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.calendar .month-card .month-title {
+  padding: 1rem 0 .5rem 0;
+  background: lightgray;
+  text-align: center;
+}
+
+.calendar .month-card .week-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: .5rem 0;
+  background: #1F1F1F;
+  color: white;
+}
+
+.calendar .month-card .week-row p {
+  width: 12%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar .month-card .days-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: lightgray;
+}
+
+.calendar .month-card .days-row p {
+  width: 13%;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+/*# sourceMappingURL=calendar.css.map */

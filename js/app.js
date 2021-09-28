@@ -152,8 +152,9 @@ function calendar() {
     const date = new Date();
     const currentYear = date.getFullYear();
     const currentMonth = date.getMonth();
+    const currentDay = date.getDate();
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
+    // const lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
 
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July',
@@ -168,7 +169,6 @@ function calendar() {
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    // console.log(daysInMonth);
     let iCounter = 0;
 
     for (let i = 0; i < firstDay; i++) {
@@ -184,6 +184,25 @@ function calendar() {
         day.className = 'day';
         day.appendChild(document.createTextNode(j));
         daysRow.appendChild(day);
+
+        // Markup current day on calendar
+        if (currentDay == j) {
+            day.style.backgroundColor = 'black';
+            day.style.borderRadius = '10px';
+            day.style.color = 'white';
+            day.style.fontWeight = '500';
+        }
+
+        // Markup saturday and sunday
+        const weekendDate = new Date(currentYear, currentMonth, j);
+
+        if (weekendDate.getDay() === 0) {
+            day.style.color = 'red';
+        }
+
+        if (weekendDate.getDay() === 6) {
+            day.style.color = 'blue';
+        }
     }
 
     for (let k = iCounter + daysInMonth; k < 42; k++) {
