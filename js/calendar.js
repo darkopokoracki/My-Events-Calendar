@@ -40,10 +40,9 @@ function createMonth(calendar) {
         
         const daysRow = document.createElement('days-row');
         daysRow.className = 'days-row';
-        createDays(daysRow);
+        createDays(daysRow, i);
         monthCard.appendChild(daysRow);
     }
-
 }
 
 function createWeekRow(weekRow) {
@@ -66,9 +65,8 @@ function createWeekRow(weekRow) {
     }
 }
 
-function createDays(daysRow) {
+function createDays(daysRow, i) {
 
-    for (let i = 0; i < 12; i++) {
         const daysInMonth = new Date(currentYear, i + 1, 0).getDate();
         const firstDay = new Date(currentYear, i, 1).getDay();
 
@@ -87,6 +85,24 @@ function createDays(daysRow) {
             day.className = 'day';
             day.appendChild(document.createTextNode(k));
             daysRow.appendChild(day);
+
+            // Markup current day on calendar
+            if (currentMonth === i && currentDay === k) {
+                day.style.backgroundColor = 'black';
+                day.style.borderRadius = '10px';
+                day.style.color = 'white';
+                day.style.fontWeight = '500';
+            }
+
+            const weekendDate = new Date(currentYear, i, k);
+
+            if (weekendDate.getDay() === 0) {
+                day.style.color = 'red';
+            }
+    
+            if (weekendDate.getDay() === 6) {
+                day.style.color = 'blue';
+            }
         }
 
         for (let m = jCounter + daysInMonth; m < 42; m++) {
@@ -96,5 +112,5 @@ function createDays(daysRow) {
             daysRow.appendChild(day);
         }
     }
-}
+
 createCalendar();

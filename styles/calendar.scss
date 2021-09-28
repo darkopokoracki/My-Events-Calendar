@@ -1,8 +1,12 @@
 
 .calendar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
     .month-card {
         min-height: 250px;
-        width: 90%;
+        width: 30%;
         margin-left: auto;
         border-radius: 10px;
         overflow: hidden;

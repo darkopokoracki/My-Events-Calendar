@@ -131,10 +131,10 @@ function nextEvent() {
         var parseEventItem = JSON.parse(getEventItem);
         eventsArray.push(parseEventItem);
 
-        var getEventDate = new Date(parseEventItem.date.split("-")); //Zasto ovo radi ??
+        var getEventDate = new Date(parseEventItem.date.split("-"));
 
         if (getEventDate < nearestDate && getEventDate > today) {
-            nearestDate = getEventDate;
+            nearestDate = getEventDate; 
             var parseEventItem_id = i;
         }
     }
@@ -142,10 +142,24 @@ function nextEvent() {
     nextEventName.innerText = eventsArray[parseEventItem_id].event;
     nextEventDate.innerText = eventsArray[parseEventItem_id].date;
     nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
-    // nextEventType.innerText = eventsArray[parseEventItem_id].type;
+    // nextEventType.innerText = eventsArray[parseEventItem_id].type; 
+    // Toto mam este implementirat
 }
 
 function calendar() {
+    var eventsList = [];
+    var monthlyEvents = [];
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const getEventItem = localStorage.getItem(localStorage.key(i));
+        const parseEventItem = JSON.parse(getEventItem);
+        const getEventDate = new Date(parseEventItem.date.split("-"));
+
+        // pushing all events in list
+        eventsList.push(getEventDate);
+    }
+
+
     const monthTitle = document.querySelector('.month-title');
     const daysRow = document.querySelector('.days-row');
 
@@ -155,6 +169,13 @@ function calendar() {
     const currentDay = date.getDate();
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
     // const lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
+
+    // checks the days on which events occur (in current year and month)
+    for (let i = 0; i < eventsList.length; i++) {
+        if (eventsList[i].getFullYear() === currentYear && eventsList[i].getMonth() === currentMonth) {
+            monthlyEvents.push(eventsList[i].getDate());
+        }
+    }
 
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July',
@@ -202,6 +223,13 @@ function calendar() {
 
         if (weekendDate.getDay() === 6) {
             day.style.color = 'blue';
+        }
+
+        // Markup events on calendar
+        for (let i = 0; i < monthlyEvents.length; i++) {
+            if (monthlyEvents[i] === j) {
+                day.style.border = '1px solid black';
+            }
         }
     }
 
