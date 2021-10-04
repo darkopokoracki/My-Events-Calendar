@@ -52,7 +52,7 @@ body {
 }
 
 .event-section .next-event h2 {
-  color: #1F1F1F;
+  color: #170F10;
 }
 
 .event-section .add-event {
@@ -61,7 +61,7 @@ body {
 
 .event-section .add-event h1 {
   text-align: center;
-  color: #1F1F1F;
+  color: #170F10;
 }
 
 .event-section .calendar {
@@ -71,12 +71,12 @@ body {
 
 .event-section .calendar h2 {
   text-align: right;
-  color: #1F1F1F;
+  color: #170F10;
 }
 
 .event-section .event-card {
   border-radius: 10px;
-  background: lightgray;
+  background: #CFD8DA;
   min-height: 250px;
   width: 90%;
   padding: 1rem;
@@ -103,7 +103,7 @@ body {
 
 .event-section .calendar-card .month-title {
   padding: 1rem 0 .5rem 0;
-  background: lightgray;
+  background: #CFD8DA;
   text-align: center;
 }
 
@@ -134,7 +134,7 @@ body {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background: lightgray;
+  background: #CFD8DA;
 }
 
 .event-section .calendar-card .days-row p {
@@ -216,8 +216,9 @@ body {
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
   font-size: 1.125rem;
   padding: 1rem 4rem 1rem 1.5rem;
-  background: #4d5061;
-  color: white;
+  background: #CFD8DA;
+  color: #170F10;
+  font-weight: bold;
   border: 0;
   display: block;
   width: 100%;

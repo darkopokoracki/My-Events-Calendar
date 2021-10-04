@@ -35,7 +35,7 @@
         padding-top: 3rem;
 
         h2 {
-            color: #1F1F1F;
+            color: $black;
         }
     }
 
@@ -44,7 +44,7 @@
 
         h1 {
             text-align: center;
-            color: #1F1F1F;
+            color: $black;
         }
     }
 
@@ -54,7 +54,7 @@
         
         h2 {
             text-align: right;
-            color: #1F1F1F;
+            color: $black;
         }
     }
 }
@@ -62,7 +62,7 @@
 .event-section {
     .event-card {
         border-radius: 10px;
-        background: lightgray;
+        background: $lightgray;
         min-height: 250px;
         width: 90%;
         padding: 1rem;
@@ -82,7 +82,7 @@
 
         .month-title {
             padding: 1rem 0 .5rem 0;
-            background: lightgray;
+            background: $lightgray;
             text-align: center;
         }
 
@@ -104,7 +104,7 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            background: lightgray;
+            background: $lightgray;
 
             p {
                 width: 13%;
@@ -162,8 +162,9 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
             font-size: 1.125rem;
             padding: 1rem 4rem 1rem 1.5rem;
-            background: #4d5061;
-            color: white;
+            background: $lightgray;
+            color: $black;
+            font-weight: bold;
             border: 0;
             display: block;
             width: 100%;
