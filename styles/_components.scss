@@ -1,7 +1,7 @@
 @mixin navLinks {
     text-decoration: none;
     font-size: 1.125rem;
-    color: #1F1F1F;
+    color: black;
 }
 
 @mixin editButton {
@@ -46,6 +46,6 @@
     cursor: pointer;
     transition: 0.3s;
     &:hover {
-        color: black;
+        color: $black;
     }
 }

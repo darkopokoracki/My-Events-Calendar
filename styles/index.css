@@ -16,7 +16,7 @@ body {
 }
 
 .header {
-  background-color: lightgray;
+  background-color: #CFD8DA;
   margin-bottom: 2rem;
 }
 
@@ -37,7 +37,7 @@ body {
 .header li a {
   text-decoration: none;
   font-size: 1.125rem;
-  color: #1F1F1F;
+  color: black;
 }
 
 .event-section {
@@ -296,7 +296,12 @@ table td {
 }
 
 .active {
-  background: #59596B;
+  background: #6E7F8F;
+  font-weight: bold;
+}
+
+.active a {
+  color: white !important;
 }
 
 .alert {
@@ -326,6 +331,6 @@ table td {
 }
 
 .close-btn:hover {
-  color: black;
+  color: #170F10;
 }
 /*# sourceMappingURL=index.css.map */
