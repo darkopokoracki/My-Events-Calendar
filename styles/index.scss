@@ -233,6 +233,7 @@ table {
 
 .edit-btn {
     @include editButton;
+    margin-bottom: 3rem;
 }
 
 .active {
