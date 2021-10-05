@@ -30,11 +30,19 @@
     </header>
     
     <div class="container">
-        <h1>Edit</h1>
+
+        <header class="edit-header">
+            <button type="button" class="back-button">&#8592;  Back</button>
+            <h1 class="action-title">Edit</h1>
+        </header>
 
         <section class="edit-section">
             <div class="modify">
                 Modify
+            </div>
+
+            <div class="sort">
+                Sort
             </div>
 
             <div class="delete">
@@ -42,6 +50,39 @@
             </div>
         </section>
 
+
+        <section class="action-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Event type</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+    
+                </tbody>
+            </table>
+
+            <div class="modify-action">
+                modify
+            </div>
+
+            <div class="sort-action">
+                Sort
+            </div>
+
+            <div class="delete-action">
+                delete
+            </div>
+
+        </section>
+
     </div>
+
+    <script src="../js/edit.js"></script>
 </body>
 </html>

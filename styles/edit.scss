@@ -1,0 +1,59 @@
+@import '_colors.scss';
+@import '_components.scss';
+
+.edit-header {
+    display: flex;
+    align-items: center;
+
+    button {
+        @include backBtn;
+    }
+
+    h1 {
+        flex: 1;
+    }
+}
+
+.edit-section {
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .modify,
+    .delete,
+    .sort {
+        padding: 1rem;
+        margin-bottom: 2rem;
+        width: 30%;
+        border-radius: 10px;
+        background: $lightblue;
+        color: $white;
+        font-size: 2rem;
+        cursor: pointer;
+        text-align: center;
+        transition: transform 300ms ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }    
+}
+
+.modify-action,
+.sort-action,
+.delete-action {
+    background: red;
+}
+
+.modify-action {
+
+}
+
+.sort-action {
+
+}
+
+.delete-action {
+
+}

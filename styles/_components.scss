@@ -49,3 +49,18 @@
         color: $black;
     }
 }
+
+@mixin backBtn {
+    border: none;
+    border-radius: 7px;
+    background: $lightblue;
+    padding: .5rem;
+    font-size: 1.5rem;
+    color: $white;
+    cursor: pointer;
+    transition: transform 300ms ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
