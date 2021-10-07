@@ -279,7 +279,11 @@ table td {
   padding: .3rem;
 }
 
-.edit-btn {
+a {
+  text-decoration: none;
+}
+
+a .edit-btn {
   padding: .5rem 1rem;
   border: none;
   border-radius: 3px;
@@ -293,7 +297,7 @@ table td {
   margin-bottom: 3rem;
 }
 
-.edit-btn i {
+a .edit-btn i {
   margin-right: .5rem;
 }
 

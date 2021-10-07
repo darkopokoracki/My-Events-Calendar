@@ -96,7 +96,6 @@ function sortTable() {
 
 
 
-
 defaultValues();
 updateTable();
 modifyDiv.addEventListener('click', modifyTable);

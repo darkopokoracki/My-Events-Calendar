@@ -72,6 +72,9 @@
 .modify-action,
 .sort-action,
 .delete-action {
-  background: red;
+  border: 1px solid black;
+  background: #CFD8DA;
+  margin-top: 3rem;
+  padding: 2rem;
 }
 /*# sourceMappingURL=edit.css.map */

@@ -231,10 +231,15 @@ table {
     }
 }
 
-.edit-btn {
-    @include editButton;
-    margin-bottom: 3rem;
+a {
+    text-decoration: none;
+
+    .edit-btn {
+        @include editButton;
+        margin-bottom: 3rem;
+    }
 }
+
 
 .active {
     background: $darkgray;
