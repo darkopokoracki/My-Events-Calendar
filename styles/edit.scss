@@ -43,7 +43,6 @@
 .modify-action,
 .sort-action,
 .delete-action {
-    border: 1px solid black;
     background: $lightgray;
     margin-top: 3rem;
     padding: 2rem;
@@ -54,7 +53,34 @@
 }
 
 .sort-action {
+    h2 {
+        margin-bottom: 1rem;
+    }
 
+    .sort-groups {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 2rem;
+
+        label {
+            font-size: 1.125rem;
+            cursor: pointer;
+        }
+
+        input {
+            transform: scale(1.5);
+            margin-right: .5rem;
+            cursor: pointer;
+        }
+    }
+
+    .sort-btn {
+        display: block;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        @include sortBtn;
+    }
 }
 
 .delete-action {

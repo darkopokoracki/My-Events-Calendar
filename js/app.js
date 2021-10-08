@@ -49,11 +49,11 @@ function addInTable(stringifyEventObject) {
 }
 
 function addInLocalStorage(event, date, location, type) {
-
     let eventsCounter = localStorage.length;
 
     class Event {
-        constructor(event, date, location, type) {
+        constructor(id, event, date, location, type) {
+            this.id = id + 1;
             this.event = event;
             this.date = date;
             this.location = location;
@@ -61,7 +61,7 @@ function addInLocalStorage(event, date, location, type) {
         }
     }
 
-    const eventObject = new Event(event, date, location, type);
+    const eventObject = new Event(eventsCounter, event, date, location, type);
 
     const stringifyEventObject = JSON.stringify(eventObject);
     localStorage.setItem(`event${eventsCounter + 1}`, stringifyEventObject);
@@ -103,7 +103,6 @@ function createAlert(bool) {
 function formValidation(e) {
     e.preventDefault();
 
-    console.log(typeSelect.value);
 
     if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '' || typeSelect.value === '') {
         createAlert(false);

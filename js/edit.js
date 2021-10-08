@@ -8,6 +8,7 @@ const backButton = document.querySelector('.back-button');
 const modifyAction = document.querySelector('.modify-action');
 const sortAction = document.querySelector('.sort-action');
 const deleteAction = document.querySelector('.delete-action');
+const sortButton = document.querySelector('.sort-btn');
 
 
 function updateTable() {
@@ -52,7 +53,7 @@ function back() {
 }
 
 
-function modifyTable() {
+function modifyView() {
     table.style.removeProperty('display');
     backButton.style.removeProperty('display');
     modifyAction.style.removeProperty('display');
@@ -67,7 +68,7 @@ function modifyTable() {
 }
 
 
-function deleteTable() {
+function deleteView() {
     table.style.removeProperty('display');
     backButton.style.removeProperty('display');
     deleteAction.style.removeProperty('display');
@@ -81,7 +82,7 @@ function deleteTable() {
     backButton.addEventListener('click', back);
 }
 
-function sortTable() {
+function sortView() {
     table.style.removeProperty('display');
     backButton.style.removeProperty('display');
     sortAction.style.removeProperty('display');
@@ -92,15 +93,82 @@ function sortTable() {
     actionTitle.style.textAlign = 'center';
 
     backButton.addEventListener('click', back);
+    sortButton.addEventListener('click', sortTableValidation);
 }
 
+function sortTableValidation() {
+    const sortById = document.getElementById('by-id'); //checkbox
+    const sortByEventNameAZ = document.getElementById('by-event-name-az'); //checkbox
+    const sortByEventNameZA = document.getElementById('by-event-name-za'); // checkbox
+    const sortByDate = document.getElementById('by-date');
+    const checkboxArray = [sortById, sortByEventNameAZ, sortByEventNameZA, sortByDate];
+
+    checkboxArray.forEach( checkbox => {
+        if (checkbox.checked === true) {
+            sortTable(checkbox.id);
+        }
+    });
+}
+
+function sortTable(sortBy) {
+    var eventArray = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const getEventItem = localStorage.getItem(localStorage.key(i));
+        const parseEventItem = JSON.parse(getEventItem);
+        eventArray.push(parseEventItem);
+    }
+
+    switch(sortBy) {
+        case 'by-id':
+            break;
+        case 'by-event-name-az':
+            console.log('Izabrano je by event-name-az');
+            break;
+        case 'by-event-name-za':
+            console.log('Izabrano je by event name-za');
+            break;
+        case 'by-date':
+            console.log('Izabrano je by-date');
+            break;
+    }
+}
+
+function createAlert(bool) {
+    const sortAction = document.querySelector('.sort-action'); // For append alert
+    const alert = document.createElement('div');
+    alert.className = 'alert';
+
+    const closeAlertBtn = document.createElement('span');
+    closeAlertBtn.className = 'close-btn';
+    closeAlertBtn.appendChild(document.createTextNode('X'));
+
+    alert.appendChild(closeAlertBtn);
+
+    if (bool === true) {
+        alert.classList.add('success-alert');
+        alert.appendChild(document.createTextNode(`Succeess: The table was successfully sorted!`));
+    } else {
+        alert.classList.add('error-alert');
+        alert.appendChild(document.createTextNode(`Error: Please check one option`));
+    }
+    
+    sortAction.insertBefore(alert, sortButton);
+
+    closeAlertBtn.addEventListener('click', () => {
+        alert.remove();
+    });
+
+    setTimeout(() => {
+        alert.remove();
+    }, 7000);
+}
 
 
 defaultValues();
 updateTable();
-modifyDiv.addEventListener('click', modifyTable);
-deleteDiv.addEventListener('click', deleteTable);
-sortDiv.addEventListener('click', sortTable);
+modifyDiv.addEventListener('click', modifyView);
+deleteDiv.addEventListener('click', deleteView);
+sortDiv.addEventListener('click', sortView);
 
 
 

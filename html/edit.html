@@ -74,8 +74,32 @@
             <div class="sort-action">
                 <h2>Sort By</h2>
 
-                <button>Sort</button>
+                <div class="sort-groups">
+                    <div class="sort-group">
+                        <input type="radio" id="by-id" name="sort">
+                        <label for="by-id">ID (default) </label>
+                    </div>
+                    
+                    <div class="sort-group">
+                        <input type="radio" id="by-event-name-az" name="sort">
+                        <label for="by-event-name-az">Event Name (A-Z)</label>
+                    </div>
+
+                    <div class="sort-group">
+                        <input type="radio" id="by-event-name-za" name="sort">
+                        <label for="by-event-name-za">Event Name (Z-A)</label>
+                    </div>
+
+                    <div class="sort-group">
+                        <input type="radio" id="by-date" name="sort">
+                        <label for="by-date">Date</label>
+                    </div>
+                </div>
+                
+                <button class="sort-btn">Sort</button>
             </div>
+
+
 
             <div class="delete-action">
                 delete

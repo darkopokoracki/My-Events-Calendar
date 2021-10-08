@@ -72,9 +72,58 @@
 .modify-action,
 .sort-action,
 .delete-action {
-  border: 1px solid black;
   background: #CFD8DA;
   margin-top: 3rem;
   padding: 2rem;
+}
+
+.sort-action h2 {
+  margin-bottom: 1rem;
+}
+
+.sort-action .sort-groups {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.sort-action .sort-groups label {
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.sort-action .sort-groups input {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  margin-right: .5rem;
+  cursor: pointer;
+}
+
+.sort-action .sort-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  background: white;
+  border: none;
+  border-radius: 7px;
+  padding: .5rem 2rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+  -webkit-transition: -webkit-box-shadow 200ms ease;
+  transition: -webkit-box-shadow 200ms ease;
+  transition: box-shadow 200ms ease;
+  transition: box-shadow 200ms ease, -webkit-box-shadow 200ms ease;
+}
+
+.sort-action .sort-btn:hover {
+  -webkit-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 /*# sourceMappingURL=edit.css.map */
