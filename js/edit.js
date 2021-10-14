@@ -102,12 +102,19 @@ function sortTableValidation() {
     const sortByEventNameZA = document.getElementById('by-event-name-za'); // checkbox
     const sortByDate = document.getElementById('by-date');
     const checkboxArray = [sortById, sortByEventNameAZ, sortByEventNameZA, sortByDate];
+    var flag = 0;
 
     checkboxArray.forEach( checkbox => {
         if (checkbox.checked === true) {
             sortTable(checkbox.id);
+            flag = 1;
+            createAlert(true);
         }
     });
+
+    if (flag === 0) {
+        createAlert(false);
+    }
 }
 
 function sortTable(sortBy) {
@@ -117,9 +124,23 @@ function sortTable(sortBy) {
         const parseEventItem = JSON.parse(getEventItem);
         eventArray.push(parseEventItem);
     }
+    
 
     switch(sortBy) {
         case 'by-id':
+            console.log(eventArray);
+
+            localStorage.clear();
+            localStorage.clear();
+        
+            for (let i = 0; i < eventArray.length; i++) {
+                console.log('Hey');
+                console.log(eventArray[i]);
+                localStorage.setItem(`event${i + 1}`, JSON.stringify(eventArray[i]));
+            }
+        
+            console.log("CLEARED");
+            // localStorage.setItem(`event${eventsCounter + 1}`, stringifyEventObject);
             break;
         case 'by-event-name-az':
             console.log('Izabrano je by event-name-az');
