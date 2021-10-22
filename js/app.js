@@ -6,22 +6,26 @@ const tableBody = document.querySelector('.table-body');
 const addButton = document.querySelector('.add-btn');
 const eventForm = document.querySelector('.event-form');
 
+// Bude nnacim spravit proveru aby nepisal greska ked zindem do konzole.
 function updateTable() {
-    for (let i = 0; i < localStorage.length; i++) {
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
+    console.log(eventsArray.length);
 
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        const parseEventItem = JSON.parse(getEventItem);
+    for (let i = 0; i < eventsArray.length; i++) {
+        console.log(eventsArray[i]);
+        // const getEventItem = localStorage.getItem(localStorage.key(i));
+        // const parseEventItem = JSON.parse(getEventItem);
 
         let tableRow = document.createElement('tr');
 
         tableRow.innerHTML = `
-            <td>${parseEventItem.id}</td>
-            <td>${parseEventItem.event}</td>
-            <td>${parseEventItem.date}</td>
-            <td>${parseEventItem.location}</td>
-            <td>${parseEventItem.type}</td>
+            <td>${eventsArray[i].id}</td>
+            <td>${eventsArray[i].event}</td>
+            <td>${eventsArray[i].date}</td>
+            <td>${eventsArray[i].location}</td>
+            <td>${eventsArray[i].type}</td>
         `
-
+        
         tableBody.appendChild(tableRow); 
     }      
 }
@@ -153,18 +157,20 @@ function nextEvent() {
     // Toto mam este implementirat
 }
 
-
-function addInTable(stringifyEventObject) {
-    const parseEventObject = JSON.parse(stringifyEventObject);
+function addInTable(eventsArray) {
+    // const parseEventObject = JSON.parse(stringifyEventObject);
+    // console.log('Ovo se pokrece u add in table');
+    console.log("Funkcija add in table uzima to sto sam posloa");
+    console.log(eventsArray);
 
     let tableRow = document.createElement('tr');
 
     tableRow.innerHTML = `
-        <td>${parseEventObject.id}</td>
-        <td>${parseEventObject.event}</td>
-        <td>${parseEventObject.date}</td>
-        <td>${parseEventObject.location}</td>
-        <td>${parseEventObject.type}</td>
+        <td>${eventsArray[eventsArray.length - 1].id}</td>
+        <td>${eventsArray[eventsArray.length - 1].event}</td>
+        <td>${eventsArray[eventsArray.length - 1].date}</td>
+        <td>${eventsArray[eventsArray.length - 1].location}</td>
+        <td>${eventsArray[eventsArray.length - 1].type}</td>
     `
     tableBody.appendChild(tableRow);
 
@@ -177,11 +183,13 @@ function addInTable(stringifyEventObject) {
 
 
 function addInLocalStorage(event, date, location, type) {
-    let eventsCounter = localStorage.length;
+
+    let eventsCounter = JSON.parse(localStorage.getItem('Events')).length;
+    console.log(eventsCounter);
 
     class Event {
         constructor(id, event, date, location, type) {
-            this.id = id + 1;    // PITANJE1 Zasto ide ovde ID a ne eventsCounter?
+            this.id = id + 1;   
             this.event = event;
             this.date = date;
             this.location = location;
@@ -190,12 +198,15 @@ function addInLocalStorage(event, date, location, type) {
     }
 
     const eventObject = new Event(eventsCounter, event, date, location, type);
-    const stringifyEventObject = JSON.stringify(eventObject);
 
-    localStorage.setItem(`event${eventObject.id}`, stringifyEventObject);
-    
-    addInTable(stringifyEventObject);
-    nextEvent();
+    const eventsArray = JSON.parse(localStorage.getItem('Events'));
+    eventsArray.push(eventObject);
+
+    localStorage.setItem('Events', JSON.stringify(eventsArray));
+    console.log(eventsArray)
+    console.log('Sada saljem funkciji add In table');
+    addInTable(eventsArray);
+    // nextEvent();
 }
 
 
@@ -244,16 +255,16 @@ function formValidation(e) {
     }
 }
 
-// localStorage.clear();
-addButton.addEventListener('click', formValidation);
-updateTable();
-calendar();
-
-
-const eventCounter = localStorage.length;
-
-if (eventCounter > 0) {
-    nextEvent();
+if (localStorage.length === 0) {
+    localStorage.setItem("Events", JSON.stringify([]));
 }
+
+// localStorage.clear();
+updateTable();
+
+// calendar();
+// const eventCounter = localStorage.length;
+
+addButton.addEventListener('click', formValidation);
 
 
