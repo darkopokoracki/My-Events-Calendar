@@ -12,19 +12,17 @@ const sortButton = document.querySelector('.sort-btn');
 
 
 function updateTable() {
-    
-    for (let i = 0; i < localStorage.length; i++) {
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        const parseEventItem = JSON.parse(getEventItem);
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
 
+    for (let i = 0; i < eventsArray.length; i++) {
         let tableRow = document.createElement('tr');
 
         tableRow.innerHTML = `
-            <td>${parseEventItem.id}</td>
-            <td>${parseEventItem.event}</td>
-            <td>${parseEventItem.date}</td>
-            <td>${parseEventItem.location}</td>
-            <td>${parseEventItem.type}</td>
+            <td>${eventsArray[i].id}</td>
+            <td>${eventsArray[i].event}</td>
+            <td>${eventsArray[i].date}</td>
+            <td>${eventsArray[i].location}</td>
+            <td>${eventsArray[i].type}</td>
         `
 
         tableBody.appendChild(tableRow); 

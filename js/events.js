@@ -2,9 +2,9 @@ const eventsSection = document.querySelector('.events-section');
 
 function getStatusMessage(date) {
     const todaysDate = new Date();
-    const currentyear = todaysDate.getFullYear();
-    const currentMonth = todaysDate.getMonth();
-    const currentDay = todaysDate.getDate();
+    // const currentyear = todaysDate.getFullYear();
+    // const currentMonth = todaysDate.getMonth();
+    // const currentDay = todaysDate.getDate();
 
     const getEventDate = new Date(date.split("-"));
 
@@ -43,22 +43,14 @@ function getDaysLeft(date) {
     }
 }
 
-function showEventImage() {
-
-}
-
 function createEventCard() {
-    for (let i = 0; i < localStorage.length; i++) {
-        // Get Items from local storage
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        const parseEventItem = JSON.parse(getEventItem);
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
 
-        console.log(parseEventItem);
+    for (let i = 0; i < eventsArray.length; i++) {
 
         //////
-        const statusMessage = getStatusMessage(parseEventItem.date); 
-        const daysLeft = getDaysLeft(parseEventItem.date);
-
+        const statusMessage = getStatusMessage(eventsArray[i].date); 
+        const daysLeft = getDaysLeft(eventsArray[i].date);
         ///////
 
         // Create event card from scratch - 100% JS
@@ -66,7 +58,7 @@ function createEventCard() {
         event.className = 'event';
 
         const eventImage = document.createElement('div');
-        eventImage.style.backgroundImage = `url('../events images/${parseEventItem.type}.jpg')`;
+        eventImage.style.backgroundImage = `url('../events images/${eventsArray[i].type}.jpg')`;
         eventImage.className = 'event-image';
         event.appendChild(eventImage);
 
@@ -77,7 +69,7 @@ function createEventCard() {
             const p1 = document.createElement('p');
             const icon1 = document.createElement('i');
             p1.className = 'event-name';
-            p1.appendChild(document.createTextNode(`${parseEventItem.event}`));
+            p1.appendChild(document.createTextNode(`${eventsArray[i].event}`));
             icon1.className = 'fas';
             icon1.classList.add('fa-star');
         div1.appendChild(icon1);
@@ -88,7 +80,7 @@ function createEventCard() {
             const p2 = document.createElement('p');
             const icon2 = document.createElement('i');
             p2.className = 'event-date';
-            p2.appendChild(document.createTextNode(`${parseEventItem.date}`));
+            p2.appendChild(document.createTextNode(`${eventsArray[i].date}`));
             icon2.className = 'far';
             icon2.classList.add('fa-calendar-alt');
         div2.appendChild(icon2);
@@ -99,7 +91,7 @@ function createEventCard() {
             const p3 = document.createElement('p');
             const icon3 = document.createElement('i');
             p3.className = 'event-location';
-            p3.appendChild(document.createTextNode(`${parseEventItem.location}`));
+            p3.appendChild(document.createTextNode(`${eventsArray[i].location}`));
             icon3.className = 'fas';
             icon3.classList.add('fa-map-marker-alt');
         div3.appendChild(icon3);

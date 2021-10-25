@@ -23,7 +23,6 @@ function createMonth(calendar) {
     ];
 
     for (let i = 0; i < 12; i++) {
-        console.log('izvrsava se');
         const monthCard = document.createElement('article');
         monthCard.className = 'month-card';
         calendar.appendChild(monthCard);

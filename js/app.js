@@ -6,15 +6,11 @@ const tableBody = document.querySelector('.table-body');
 const addButton = document.querySelector('.add-btn');
 const eventForm = document.querySelector('.event-form');
 
-// Bude nnacim spravit proveru aby nepisal greska ked zindem do konzole.
+
 function updateTable() {
     let eventsArray = JSON.parse(localStorage.getItem('Events'));
-    console.log(eventsArray.length);
 
     for (let i = 0; i < eventsArray.length; i++) {
-        console.log(eventsArray[i]);
-        // const getEventItem = localStorage.getItem(localStorage.key(i));
-        // const parseEventItem = JSON.parse(getEventItem);
 
         let tableRow = document.createElement('tr');
 
@@ -32,18 +28,17 @@ function updateTable() {
 
 
 function calendar() {
+
     var eventsList = [];
     var monthlyEvents = [];
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        const parseEventItem = JSON.parse(getEventItem);
-        const getEventDate = new Date(parseEventItem.date.split("-"));
+    for (let i = 0; i < eventsArray.length; i++) {
+        const getEventDate = new Date(eventsArray[i].date.split("-"));
 
-        // pushing all events in list
+        // pushing all events date in list
         eventsList.push(getEventDate);
     }
-
 
     const monthTitle = document.querySelector('.month-title');
     const daysRow = document.querySelector('.days-row');
@@ -57,19 +52,18 @@ function calendar() {
 
     // checks the days on which events occur (in current year and month)
     for (let i = 0; i < eventsList.length; i++) {
+
         if (eventsList[i].getFullYear() === currentYear && eventsList[i].getMonth() === currentMonth) {
             monthlyEvents.push(eventsList[i].getDate());
         }
     }
+
 
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July',
         'August', 'September', 'October', 'November', 'December'
     ];
 
-    // const days = [
-    //     'S', 'M', 'T', 'W', 'T', 'F', 'S'
-    // ];
 
     monthTitle.innerText = months[currentMonth];
 
@@ -133,16 +127,18 @@ function nextEvent() {
     const nextEventLocation = document.querySelector('.next-event-location');
     // const nextEventType = document.querySelector('.next-event-type');
 
-    var eventsArray = [];
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
+    
+    var eventsDateArray = [];
     let nearestDate = new Date(2100, 8, 20);
     const today = new Date();
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        var parseEventItem = JSON.parse(getEventItem);
-        eventsArray.push(parseEventItem);
+    for (let i = 0; i < eventsArray.length; i++) {
+        // const getEventItem = localStorage.getItem(localStorage.key(i));
+        // var parseEventItem = JSON.parse(getEventItem);
+        eventsDateArray.push(eventsArray[i]);
 
-        var getEventDate = new Date(parseEventItem.date.split("-"));
+        var getEventDate = new Date(eventsArray[i].date.split("-"));
 
         if (getEventDate < nearestDate && getEventDate > today) {
             nearestDate = getEventDate; 
@@ -150,18 +146,16 @@ function nextEvent() {
         }
     }
 
-    nextEventName.innerText = eventsArray[parseEventItem_id].event;
-    nextEventDate.innerText = eventsArray[parseEventItem_id].date;
-    nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
-    // nextEventType.innerText = eventsArray[parseEventItem_id].type; 
+    nextEventName.innerText = eventsDateArray[parseEventItem_id].event;
+    nextEventDate.innerText = eventsDateArray[parseEventItem_id].date;
+    nextEventLocation.innerText = eventsDateArray[parseEventItem_id].location;
+    // nextEventType.innerText = eventsDateArray[parseEventItem_id].type; 
     // Toto mam este implementirat
+    // Za sada dobro radi ova funkcija!
 }
 
 function addInTable(eventsArray) {
-    // const parseEventObject = JSON.parse(stringifyEventObject);
-    // console.log('Ovo se pokrece u add in table');
-    console.log("Funkcija add in table uzima to sto sam posloa");
-    console.log(eventsArray);
+    // console.log(eventsArray);
 
     let tableRow = document.createElement('tr');
 
@@ -178,7 +172,6 @@ function addInTable(eventsArray) {
     dateInput.value = '';
     locationInput.value = '';
     typeSelect.value = '';  
-
 }
 
 
@@ -206,7 +199,7 @@ function addInLocalStorage(event, date, location, type) {
     console.log(eventsArray)
     console.log('Sada saljem funkciji add In table');
     addInTable(eventsArray);
-    // nextEvent();
+    // nextEvent(); zasto je samo ovde
 }
 
 
@@ -262,9 +255,9 @@ if (localStorage.length === 0) {
 // localStorage.clear();
 updateTable();
 
-// calendar();
+calendar();
 // const eventCounter = localStorage.length;
-
+nextEvent();
 addButton.addEventListener('click', formValidation);
 
 
