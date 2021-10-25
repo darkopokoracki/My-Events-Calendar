@@ -85,43 +85,33 @@ function createAlert(bool) {
 
 
 function sortTable(sortBy) {
-    var eventArray = [];
-    var idArray = [];
-
-    for (let i = 0; i < localStorage.length; i++) {
-        const getEventItem = localStorage.getItem(localStorage.key(i));
-        const parseEventItem = JSON.parse(getEventItem);
-        console.log(parseEventItem)
-        eventArray.push(parseEventItem);
-        idArray.push(parseEventItem.id)
-    }
     
+    var eventsId = [4, 3, 2, 1];
+
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
+    console.log('Pa da vidimo');
+    console.log(eventsArray);
+    // for (let i = 0; i < eventsArray.length; i++) {
+    //     eventsId.push(eventsArray[i].id);
+    // }
+    // console.log(eventsId);
 
     switch(sortBy) {
         case 'by-id':
-            console.log(eventArray);
-            const sorted = idArray.sort(function(a, b) {return a - b});
-            console.log(sorted);
+            console.log('Izbrano je sortiranje po ID');
+            let sortedArray = [];
+            console.log('Aloo');
 
-            var sortedEventsArray = []
-            for (let i = 0; i < idArray.length; i++) {
-                for (j = 0; j < eventArray.length; j++) {
-                    if (idArray[i] === eventArray[j].id) {
-                        sortedEventsArray.push(eventArray[j])
+            for (let j = 0; j < eventsId.length; j++) {
+                for (let k = 0; k < eventsArray.length; k++) {
+                    if (eventsId[j] === eventsArray[k].id) {
+                        sortedArray.push(eventsArray[k]);
                     }
                 }
             }
-            // Toto Sortirania Po ID Robi, nacim mi smisliet logiku ako to prikazat do tabele
-            // Fora je ze secko co kcem aby bolo trajnvo, misi ist cez LocalStorage
-            // FOra je v tom ze localStorage mi nerobi najlepsie lebo miesa indforamcije
-            console.log(sortedEventsArray)
 
-            // localStorage.clear();
-        
-            // for (let i = 0; i < eventArray.length; i++) {
-            //     localStorage.setItem(`event${i + 1}`, JSON.stringify(sortedEventsArray[i]));
-            // }
-            // updateTable();
+            localStorage.setItem('Events', JSON.stringify(sortedArray));
+
             break;
         case 'by-event-name-az':
             console.log('Izabrano je by event-name-az');
@@ -137,10 +127,10 @@ function sortTable(sortBy) {
 
 
 function sortTableValidation() {
-    const sortById = document.getElementById('by-id'); //checkbox
-    const sortByEventNameAZ = document.getElementById('by-event-name-az'); //checkbox
+    const sortById = document.getElementById('by-id'); // checkbox
+    const sortByEventNameAZ = document.getElementById('by-event-name-az'); // checkbox
     const sortByEventNameZA = document.getElementById('by-event-name-za'); // checkbox
-    const sortByDate = document.getElementById('by-date');
+    const sortByDate = document.getElementById('by-date'); // checkbox
     const checkboxArray = [sortById, sortByEventNameAZ, sortByEventNameZA, sortByDate];
     var flag = 0;
 
