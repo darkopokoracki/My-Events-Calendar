@@ -85,22 +85,21 @@ function createAlert(bool) {
 
 
 function sortTable(sortBy) {
-    
-    var eventsId = [4, 3, 2, 1];
+    console.log(sortBy);
+    var eventsId = [];
 
     let eventsArray = JSON.parse(localStorage.getItem('Events'));
-    console.log('Pa da vidimo');
-    console.log(eventsArray);
-    // for (let i = 0; i < eventsArray.length; i++) {
-    //     eventsId.push(eventsArray[i].id);
-    // }
-    // console.log(eventsId);
+    console.log('events array length: ');
+    console.log(eventsArray.length);
+    for (let i = 0; i < eventsArray.length; i++) {
+        eventsId.push(i);
+    }
+    console.log("Ovo je ispis popunjenog niza");
+    console.log(eventsId);
 
     switch(sortBy) {
-        case 'by-id':
-            console.log('Izbrano je sortiranje po ID');
+        case 'by-id-ascending':
             let sortedArray = [];
-            console.log('Aloo');
 
             for (let j = 0; j < eventsId.length; j++) {
                 for (let k = 0; k < eventsArray.length; k++) {
@@ -111,6 +110,10 @@ function sortTable(sortBy) {
             }
 
             localStorage.setItem('Events', JSON.stringify(sortedArray));
+
+            break;
+
+        case 'by-id-descending':
 
             break;
         case 'by-event-name-az':
@@ -127,11 +130,13 @@ function sortTable(sortBy) {
 
 
 function sortTableValidation() {
-    const sortById = document.getElementById('by-id'); // checkbox
+    const sortByIdAscending = document.getElementById('by-id-ascending'); // checkbox
+    const sortByIdDescending = document.getElementById('by-id-descending'); // checkbox
     const sortByEventNameAZ = document.getElementById('by-event-name-az'); // checkbox
     const sortByEventNameZA = document.getElementById('by-event-name-za'); // checkbox
     const sortByDate = document.getElementById('by-date'); // checkbox
-    const checkboxArray = [sortById, sortByEventNameAZ, sortByEventNameZA, sortByDate];
+    const checkboxArray = [sortByIdAscending,sortByIdDescending, sortByEventNameAZ, sortByEventNameZA, sortByDate];
+
     var flag = 0;
 
     checkboxArray.forEach( checkbox => {
@@ -190,6 +195,8 @@ function sortView() {
 
     backButton.addEventListener('click', back);
     sortButton.addEventListener('click', sortTableValidation);
+    // Asi takto toto bude
+    // sortButton.parentElement.href = '../html/index.html';
 }
 
 

@@ -134,8 +134,6 @@ function nextEvent() {
     const today = new Date();
 
     for (let i = 0; i < eventsArray.length; i++) {
-        // const getEventItem = localStorage.getItem(localStorage.key(i));
-        // var parseEventItem = JSON.parse(getEventItem);
         eventsDateArray.push(eventsArray[i]);
 
         var getEventDate = new Date(eventsArray[i].date.split("-"));
@@ -149,7 +147,9 @@ function nextEvent() {
     nextEventName.innerText = eventsDateArray[parseEventItem_id].event;
     nextEventDate.innerText = eventsDateArray[parseEventItem_id].date;
     nextEventLocation.innerText = eventsDateArray[parseEventItem_id].location;
-    // nextEventType.innerText = eventsDateArray[parseEventItem_id].type; 
+        // nextEventType.innerText = eventsDateArray[parseEventItem_id].type;
+    // Tuto mam gresku aj to chybu
+ 
     // Toto mam este implementirat
     // Za sada dobro radi ova funkcija!
 }
