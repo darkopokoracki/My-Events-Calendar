@@ -1,3 +1,4 @@
+// --------- References ----------
 const eventInput = document.getElementById('input-event-name');
 const dateInput = document.getElementById('input-date');
 const locationInput = document.getElementById('input-location');
@@ -6,12 +7,14 @@ const tableBody = document.querySelector('.table-body');
 const addButton = document.querySelector('.add-btn');
 const eventForm = document.querySelector('.event-form');
 
-
+// ------Functions: 7-------
 function updateTable() {
+    // getting events from localStorage
     let eventsArray = JSON.parse(localStorage.getItem('Events'));
 
+    // looping throught events if events list in localstorage is not empty
     for (let i = 0; i < eventsArray.length; i++) {
-
+        // creating table row
         let tableRow = document.createElement('tr');
 
         tableRow.innerHTML = `
@@ -22,24 +25,13 @@ function updateTable() {
             <td>${eventsArray[i].type}</td>
         `
         
-        tableBody.appendChild(tableRow); 
-    }      
+        // adding new row in DOM, in table
+        tableBody.appendChild(tableRow);
+    }
 }
 
 
 function calendar() {
-
-    var eventsList = [];
-    var monthlyEvents = [];
-    let eventsArray = JSON.parse(localStorage.getItem('Events'));
-
-    for (let i = 0; i < eventsArray.length; i++) {
-        const getEventDate = new Date(eventsArray[i].date.split("-"));
-
-        // pushing all events date in list
-        eventsList.push(getEventDate);
-    }
-
     const monthTitle = document.querySelector('.month-title');
     const daysRow = document.querySelector('.days-row');
 
@@ -48,29 +40,41 @@ function calendar() {
     const currentMonth = date.getMonth();
     const currentDay = date.getDate();
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    // const lastDay = new Date(currentYear, currentMonth + 1, 0).getDay();
 
-    // checks the days on which events occur (in current year and month)
-    for (let i = 0; i < eventsList.length; i++) {
+    var eventsDateList = []; // contains dates of events
+    var monthlyEvents = []; // contains the days on which the event exists
 
-        if (eventsList[i].getFullYear() === currentYear && eventsList[i].getMonth() === currentMonth) {
-            monthlyEvents.push(eventsList[i].getDate());
-        }
+    // getting events from localStorage
+    let eventsArray = JSON.parse(localStorage.getItem('Events'));
+
+    for (let i = 0; i < eventsArray.length; i++) {
+        // making date with split method
+        const getEventDate = new Date(eventsArray[i].date.split("-"));
+
+        // pushing all events dates in list
+        eventsDateList.push(getEventDate);
     }
 
+
+    // checks the days on which events occur (in current year and month)
+    for (let i = 0; i < eventsDateList.length; i++) {
+        if (eventsDateList[i].getFullYear() === currentYear && eventsDateList[i].getMonth() === currentMonth) {
+            monthlyEvents.push(eventsDateList[i].getDate());
+        }
+    }
 
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June', 'July',
         'August', 'September', 'October', 'November', 'December'
     ];
 
-
+    // month title on claendar
     monthTitle.innerText = months[currentMonth];
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
     let iCounter = 0;
 
+    // filling out the calendar
     for (let i = 0; i < firstDay; i++) {
         const day = document.createElement('p');
         day.className = 'day';
@@ -125,61 +129,57 @@ function nextEvent() {
     const nextEventName = document.querySelector('.next-event-name');
     const nextEventDate = document.querySelector('.next-event-date');
     const nextEventLocation = document.querySelector('.next-event-location');
-    // const nextEventType = document.querySelector('.next-event-type');
+    var isEmpty = true;
 
+    // getting events from localStorage
     let eventsArray = JSON.parse(localStorage.getItem('Events'));
     
-    var eventsDateArray = [];
     let nearestDate = new Date(2100, 8, 20);
     const today = new Date();
 
-    for (let i = 0; i < eventsArray.length; i++) {
-        eventsDateArray.push(eventsArray[i]);
 
+    for (let i = 0; i < eventsArray.length; i++) {
         var getEventDate = new Date(eventsArray[i].date.split("-"));
 
         if (getEventDate < nearestDate && getEventDate > today) {
             nearestDate = getEventDate; 
             var parseEventItem_id = i;
+            isEmpty = false;
         }
     }
 
-    nextEventName.innerText = eventsDateArray[parseEventItem_id].event;
-    nextEventDate.innerText = eventsDateArray[parseEventItem_id].date;
-    nextEventLocation.innerText = eventsDateArray[parseEventItem_id].location;
-        // nextEventType.innerText = eventsDateArray[parseEventItem_id].type;
-    // Tuto mam gresku aj to chybu
- 
-    // Toto mam este implementirat
-    // Za sada dobro radi ova funkcija!
+    if (isEmpty === false) {
+        nextEventName.innerText = eventsArray[parseEventItem_id].event;
+        nextEventDate.innerText = eventsArray[parseEventItem_id].date;
+        nextEventLocation.innerText = eventsArray[parseEventItem_id].location;
+    }
 }
 
-function addInTable(eventsArray) {
-    // console.log(eventsArray);
 
+function addInTable(eventsArray) {
+    // making table row
     let tableRow = document.createElement('tr');
 
-    tableRow.innerHTML = `
+    tableRow.innerHTML = 
+    // adding last event in table
+    `
         <td>${eventsArray[eventsArray.length - 1].id}</td>
         <td>${eventsArray[eventsArray.length - 1].event}</td>
         <td>${eventsArray[eventsArray.length - 1].date}</td>
         <td>${eventsArray[eventsArray.length - 1].location}</td>
         <td>${eventsArray[eventsArray.length - 1].type}</td>
-    `
-    tableBody.appendChild(tableRow);
+    `;
 
-    eventInput.value = '';
-    dateInput.value = '';
-    locationInput.value = '';
-    typeSelect.value = '';  
+    // adding new row in DOM, in table
+    tableBody.appendChild(tableRow); 
 }
 
 
 function addInLocalStorage(event, date, location, type) {
-
+    // getting number of events
     let eventsCounter = JSON.parse(localStorage.getItem('Events')).length;
-    console.log(eventsCounter);
 
+    // Event class for making event objects
     class Event {
         constructor(id, event, date, location, type) {
             this.id = id + 1;   
@@ -190,24 +190,29 @@ function addInLocalStorage(event, date, location, type) {
         }
     }
 
+    // making new event object
     const eventObject = new Event(eventsCounter, event, date, location, type);
 
+    // getting events from localStorage
     const eventsArray = JSON.parse(localStorage.getItem('Events'));
+
+    // adding new event object to list of events
     eventsArray.push(eventObject);
 
+    // storing events in local storage with new added object
     localStorage.setItem('Events', JSON.stringify(eventsArray));
-    console.log(eventsArray)
-    console.log('Sada saljem funkciji add In table');
+
     addInTable(eventsArray);
-    // nextEvent(); zasto je samo ovde
+    nextEvent();
 }
 
 
 function createAlert(bool) {
-
+    // create alert
     const alert = document.createElement('div');
     alert.className = 'alert';
 
+    // create close button for alert
     const closeAlertBtn = document.createElement('span');
     closeAlertBtn.className = 'close-btn';
     closeAlertBtn.appendChild(document.createTextNode('X'));
@@ -222,8 +227,10 @@ function createAlert(bool) {
         alert.appendChild(document.createTextNode(`Error: All fields must be filled`));
     }
     
+    // adding alert in DOM
     eventForm.appendChild(alert);
 
+    // closing alert on click or after 7 seconds
     closeAlertBtn.addEventListener('click', () => {
         alert.remove();
     });
@@ -237,6 +244,7 @@ function createAlert(bool) {
 function formValidation(e) {
     e.preventDefault();
 
+    // checking form validation
     if (eventInput.value === '' || dateInput.value === '' || locationInput.value === '' || typeSelect.value === '') {
         createAlert(false);
     } else {
@@ -245,19 +253,31 @@ function formValidation(e) {
                           dateInput.value,  
                           locationInput.value, 
                           typeSelect.value);
+        
+        // clearing input fields
+        eventInput.value = "";
+        dateInput.value = "";
+        locationInput.value = "";
+        typeSelect.value = "";
     }
 }
 
+
+// ------- Functions Invoking and Event listeners -------
+
+// Setting up list of events in localStorage
 if (localStorage.length === 0) {
     localStorage.setItem("Events", JSON.stringify([]));
 }
 
+// Clear Local Storage for testing purpose
 // localStorage.clear();
-updateTable();
 
+
+updateTable();
 calendar();
-// const eventCounter = localStorage.length;
 nextEvent();
+
 addButton.addEventListener('click', formValidation);
 
 

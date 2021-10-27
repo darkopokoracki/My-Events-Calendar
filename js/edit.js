@@ -85,20 +85,17 @@ function createAlert(bool) {
 
 
 function sortTable(sortBy) {
-    console.log(sortBy);
-    var eventsId = [];
-
+    // getting events from localStorage
     let eventsArray = JSON.parse(localStorage.getItem('Events'));
-    console.log('events array length: ');
-    console.log(eventsArray.length);
-    for (let i = 0; i < eventsArray.length; i++) {
-        eventsId.push(i);
-    }
-    console.log("Ovo je ispis popunjenog niza");
-    console.log(eventsId);
 
     switch(sortBy) {
         case 'by-id-ascending':
+            var eventsId = [];
+
+            for (let i = 0; i < eventsArray.length; i++) {
+                eventsId.push(i + 1);
+            }
+
             let sortedArray = [];
 
             for (let j = 0; j < eventsId.length; j++) {
@@ -110,7 +107,6 @@ function sortTable(sortBy) {
             }
 
             localStorage.setItem('Events', JSON.stringify(sortedArray));
-
             break;
 
         case 'by-id-descending':
@@ -196,7 +192,7 @@ function sortView() {
     backButton.addEventListener('click', back);
     sortButton.addEventListener('click', sortTableValidation);
     // Asi takto toto bude
-    // sortButton.parentElement.href = '../html/index.html';
+    sortButton.parentElement.href = '../html/index.html';
 }
 
 

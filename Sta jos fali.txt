@@ -1,9 +1,0 @@
--- Kalendar za celu godinu
--- Kalendar obeleziti dane.
-
-
-
----- Dizajn
-
--- Greske 
-1. Ne radi passed status na events.js
