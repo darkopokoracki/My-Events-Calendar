@@ -90,30 +90,64 @@ function sortTable(sortBy) {
 
     switch(sortBy) {
         case 'by-id-ascending':
-            var eventsId = [];
+            var eventsIdAscending = [];
 
             for (let i = 0; i < eventsArray.length; i++) {
-                eventsId.push(i + 1);
+                eventsIdAscending.push(i + 1);
             }
 
-            let sortedArray = [];
+            let sortedArrayAscending = [];
 
-            for (let j = 0; j < eventsId.length; j++) {
+            for (let j = 0; j < eventsIdAscending.length; j++) {
                 for (let k = 0; k < eventsArray.length; k++) {
-                    if (eventsId[j] === eventsArray[k].id) {
-                        sortedArray.push(eventsArray[k]);
+                    if (eventsIdAscending[j] === eventsArray[k].id) {
+                        sortedArrayAscending.push(eventsArray[k]);
                     }
                 }
             }
 
-            localStorage.setItem('Events', JSON.stringify(sortedArray));
+            localStorage.setItem('Events', JSON.stringify(sortedArrayAscending));
             break;
-
         case 'by-id-descending':
+            let eventsIdDescending = [];
 
+            for (let i = eventsArray.length; i > 0; i--) {
+                eventsIdDescending.push(i);
+            }
+
+            let sortedArrayDescending = [];
+
+            for (let j = 0; j < eventsIdDescending.length; j++) {
+                for (let k = 0; k < eventsArray.length; k++) {
+                    if (eventsIdDescending[j] === eventsArray[k].id) {
+                        sortedArrayDescending.push(eventsArray[k]);
+                    }
+                }
+            }
+
+            localStorage.setItem('Events', JSON.stringify(sortedArrayDescending));
             break;
         case 'by-event-name-az':
-            console.log('Izabrano je by event-name-az');
+            console.log('usli smo u AZ');
+            let eventsNameAZ = [];
+
+            for (let i = 0; i < eventsArray.length; i++) {
+                console.log("usli smo u for petlju");
+                eventsNameAZ.push(eventsArray[i].event);
+            }
+
+            let sortedArrayAZ = [];
+
+            for (let j = 0; j < eventsNameAZ.length; j++) {
+                for (let k = 0; k < eventsArray.length; k++) {
+                    if (eventsNameAZ[j] === eventsArray[k].event) {
+                        sortedArrayAZ.push(eventsArray[k]);
+                    }
+                }
+            }
+            console.log(sortedArrayAZ);
+            localStorage.setItem('Events', JSON.stringify(sortedArrayAZ));
+
             break;
         case 'by-event-name-za':
             console.log('Izabrano je by event name-za');
@@ -191,8 +225,8 @@ function sortView() {
 
     backButton.addEventListener('click', back);
     sortButton.addEventListener('click', sortTableValidation);
-    // Asi takto toto bude
-    sortButton.parentElement.href = '../html/index.html';
+
+    // sortButton.parentElement.href = '../html/index.html';
 }
 
 
