@@ -128,13 +128,13 @@ function sortTable(sortBy) {
             localStorage.setItem('Events', JSON.stringify(sortedArrayDescending));
             break;
         case 'by-event-name-az':
-            console.log('usli smo u AZ');
             let eventsNameAZ = [];
 
             for (let i = 0; i < eventsArray.length; i++) {
-                console.log("usli smo u for petlju");
                 eventsNameAZ.push(eventsArray[i].event);
             }
+
+            eventsNameAZ.sort();
 
             let sortedArrayAZ = [];
 
@@ -145,15 +145,56 @@ function sortTable(sortBy) {
                     }
                 }
             }
-            console.log(sortedArrayAZ);
+
             localStorage.setItem('Events', JSON.stringify(sortedArrayAZ));
 
             break;
         case 'by-event-name-za':
-            console.log('Izabrano je by event name-za');
+            let eventsNameZA = [];
+
+            for (let i = 0; i < eventsArray.length; i++) {
+                eventsNameZA.push(eventsArray[i].event);
+            }
+
+            eventsNameZA.sort().reverse();
+
+            let sortedArrayZA = [];
+
+            for (let j = 0; j < eventsNameZA.length; j++) {
+                for (let k = 0; k < eventsArray.length; k++) {
+                    if (eventsNameZA[j] === eventsArray[k].event) {
+                        sortedArrayZA.push(eventsArray[k]);
+                    }
+                }
+            }
+
+            localStorage.setItem('Events', JSON.stringify(sortedArrayZA));
             break;
         case 'by-date':
-            console.log('Izabrano je by-date');
+            console.log("Da das ads")
+            let eventsDate = [];
+
+            for (let i = 0; i < eventsArray.length; i++) {
+                console.log('ttt')
+                eventsDate.push(new Date(eventsArray[i].date.split("-")));
+            }
+
+            // eventsNameAZ.sort();
+            console.log("Pa Da vidimo");
+            console.log(eventsDate);
+
+            
+            let sortedArrayDate = [];
+
+            // for (let j = 0; j < eventsDate.length; j++) {
+            //     for (let k = 0; k < eventsArray.length; k++) {
+            //         if (eventsDate[j] === eventsArray[k].date) {
+            //             sortedArrayDate.push(eventsArray[k]);
+            //         }
+            //     }
+            // }
+
+            // localStorage.setItem('Events', JSON.stringify(sortedArrayDate));
             break;
     }
 }
