@@ -133,18 +133,21 @@ function sortTable(sortBy) {
             for (let i = 0; i < eventsArray.length; i++) {
                 eventsNameAZ.push(eventsArray[i].event);
             }
-
+            console.log("Pre sortiranja");
+            console.log(eventsNameAZ);
             eventsNameAZ.sort();
 
-            let sortedArrayAZ = [];
+            let sortedArrayAZ = eventsNameAZ.sort();
+            console.log("Posle sortiranja");
+            console.log(sortedArrayAZ);
 
-            for (let j = 0; j < eventsNameAZ.length; j++) {
-                for (let k = 0; k < eventsArray.length; k++) {
-                    if (eventsNameAZ[j] === eventsArray[k].event) {
-                        sortedArrayAZ.push(eventsArray[k]);
-                    }
-                }
-            }
+            // for (let j = 0; j < eventsNameAZ.length; j++) {
+            //     for (let k = 0; k < eventsArray.length; k++) {
+            //         if (eventsNameAZ[j] === eventsArray[k].event) {
+            //             sortedArrayAZ.push(eventsArray[k]);
+            //         }
+            //     }
+            // }
 
             localStorage.setItem('Events', JSON.stringify(sortedArrayAZ));
 
